@@ -22,13 +22,25 @@ we can start using it.
 
 We will help Alfredo with his new project, create a repository with all his recipes.
 
-First, let's create a new directory in the `Desktop` folder for our work and then change the current working directory to the newly created one:
+First, let's create a new directory in the `Desktop` folder for our work:
 
+<img src="fig/03-a-create-directory.JPG" alt="03-a-create-directory" width=50%>
+
+We then open this newly created folder in VS Code by clicking "Open Folder":
+
+<img src="fig/03-a-directory-opened.JPG" alt="03-a-directory-opened" width=50%>
+
+and then selecting the recipes folder:
+
+<img src="fig/03-a-select-directory.JPG" alt="03-a-select-directory" width=50%>
+
+<strike>
 ```bash
 $ cd ~/Desktop
 $ mkdir recipes
 $ cd recipes
 ```
+</strike>
 
 Then we tell Git to make `recipes` a [repository](../learners/reference.md#repository)
 \-- a place where Git can store versions of our files:
