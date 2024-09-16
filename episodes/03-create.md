@@ -26,53 +26,43 @@ First, let's create a new directory in the `Desktop` folder for our work:
 
 <img src="fig/03-a-create-directory.JPG" alt="03-a-create-directory" width=50%>
 
-We then open this newly created folder in VS Code by clicking "Open Folder":
+We then open this newly created folder in VS Code by clicking `Open Folder`:
 
 <img src="fig/03-a-directory-opened.JPG" alt="03-a-directory-opened" width=50%>
 
-and then selecting the recipes folder:
+and then selecting the `recipes` folder:
 
 <img src="fig/03-a-select-directory.JPG" alt="03-a-select-directory" width=50%>
 
-<strike>
-```bash
-$ cd ~/Desktop
-$ mkdir recipes
-$ cd recipes
-```
-</strike>
-
 Then we tell Git to make `recipes` a [repository](../learners/reference.md#repository)
-\-- a place where Git can store versions of our files:
+\-- a place where Git can store versions of our files. Click menu `View` and then `Source Control`:
 
-```bash
-$ git init
-```
+<img src="fig/03-b-source-control-menu.JPG" alt="03-b-source-control-menu" width=50%>
 
-It is important to note that `git init` will create a repository that
+Click `Initialize Repository`:
+
+<img src="fig/03-b-initialize-repository.JPG" alt="03-b-initialize-repository" width=50%>
+
+and you will see `Source Control` which means the repository is created. 
+
+<img src="fig/03-b-source-control.JPG" alt="03-b-source-control" width=50%>
+
+
+It is important to note that `Initialize Repository` will create a repository that
 can include subdirectories and their files---there is no need to create
 separate repositories nested within the `recipes` repository, whether
 subdirectories are present from the beginning or added later. Also, note
 that the creation of the `recipes` directory and its initialization as a
 repository are completely separate processes.
 
-If we use `ls` to show the directory's contents,
-it appears that nothing has changed:
+If we view the repository in its folder, it appears that nothing has changed since there is no visible content. To see what changed, click `View` in the folder:
 
-```bash
-$ ls
-```
+<img src="fig/03-c-directory-empty-view-menu.JPG" alt="03-c-directory-empty-view-menu" width=50%>
 
-But if we add the `-a` flag to show everything,
-we can see that Git has created a hidden directory within `recipes` called `.git`:
+and choose `Show` and `hidden items`. We can see that Git has created a hidden directory within `recipes` called `.git`:
 
-```bash
-$ ls -a
-```
+<img src="fig/03-c-directory-show-hidden-items.JPG" alt="03-c-directory-show-hidden-items" width=50%>
 
-```output
-.	..	.git
-```
 
 Git uses this special subdirectory to store all the information about the project,
 including the tracked files and sub-directories located within the project's directory.
