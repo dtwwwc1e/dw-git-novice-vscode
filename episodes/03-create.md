@@ -97,20 +97,23 @@ We can now start using one of the most important git commands, which is particul
 Along with tracking information about recipes (the project we have already created),
 Alfredo would also like to track information about desserts specifically.
 Alfredo creates a `desserts` project inside his `recipes`
-project with the following sequence of commands:
+project. Is it a good idea to have a repository for tracking files stored in the `desserts` subdirectory?
 
-```bash
-$ cd ~/Desktop    # return to Desktop directory
-$ cd recipes      # go into recipes directory, which is already a Git repository
-$ ls -a           # ensure the .git subdirectory is still present in the recipes directory
-$ mkdir desserts # make a sub-directory recipes/desserts
-$ cd desserts    # go into desserts subdirectory
-$ git init        # make the desserts subdirectory a Git repository
-$ ls -a           # ensure the .git subdirectory is present indicating we have created a new Git repository
-```
+To create the repository for `dessert`, Alfredo selects this folder in VSCode, as shown below:
 
-Is the `git init` command, run inside the `desserts` subdirectory, required for
-tracking files stored in the `desserts` subdirectory?
+<img src="fig/03-e-select-dessert-folder.JPG" alt="03-e-select-dessert-folder" width=50%>
+
+However, VS Code tells Alfredo there is an error in one or two messages:
+
+<img src="fig/03-e-warning-parent-repository-exists.JPG" alt="03-e-warning-parent-repository-exists" width=50%>
+
+<img src="fig/03-e-parent-repository-button.JPG" alt="03-e-parent-repository-button" width=50%>
+
+Alredo explores further using the `Open Repository` button and it looks like Alfredo cannot create this repository:
+
+<img src="fig/03-e-parent-repository-open.JPG" alt="03-e-parent-repository-open" width=50%>
+
+What should Alfredo do?
 
 :::::::::::::::  solution
 
@@ -126,25 +129,15 @@ Additionally, Git repositories can interfere with each other if they are "nested
 the outer repository will try to version-control
 the inner repository. Therefore, it's best to create each new Git
 repository in a separate directory. To be sure that there is no conflicting
-repository in the directory, check the output of `git status`. If it looks
-like the following, you are good to go to create a new repository as shown
-above:
-
-```bash
-$ git status
-```
-
-```output
-fatal: Not a git repository (or any of the parent directories): .git
-```
+repository in the directory, check the output of `git status`.
 
 :::::::::::::::::::::::::
 
-## Correcting `git init` Mistakes
+## Correcting Initialize Repository Mistakes
 
-Jimmy explains to Alfredo how a nested repository is redundant and may cause confusion
+Alfredo has managed to create the `dessert` repository inside `recipes`. Jimmy explains to Alfredo how such a nested repository is redundant and may cause confusion
 down the road. Alfredo would like to go back to a single git repository. How can Alfredo undo
-his last `git init` in the `desserts` subdirectory?
+his last Initialize Repository in the `desserts` subdirectory?
 
 :::::::::::::::  solution
 
@@ -154,13 +147,9 @@ his last `git init` in the `desserts` subdirectory?
 
 Removing files from a Git repository needs to be done with caution. But we have not learned
 yet how to tell Git to track a particular file; we will learn this in the next episode. Files
-that are not tracked by Git can easily be removed like any other "ordinary" files with
+that are not tracked by Git can easily be removed like any other "ordinary" files by deleting them in VSCode Explorer.
 
-```bash
-$ rm filename
-```
-
-Similarly a directory can be removed using `rm -r dirname`.
+Similarly a directory can be removed in the same way in Explorer.
 If the files or folder being removed in this fashion are tracked by Git, then their removal
 becomes another change that we will need to track, as we will see in the next episode.
 
@@ -168,16 +157,12 @@ becomes another change that we will need to track, as we will see in the next ep
 
 Git keeps all of its files in the `.git` directory.
 To recover from this little mistake, Alfredo can remove the `.git`
-folder in the desserts subdirectory by running the following command from inside the `recipes` directory:
-
-```bash
-$ rm -rf desserts/.git
-```
+folder in the desserts subdirectory by deleting the `.git` directory.
 
 But be careful! Running this command in the wrong directory will remove
 the entire Git history of a project you might want to keep.
-In general, deleting files and directories using `rm` from the command line cannot be reversed.
-Therefore, always check your current directory using the command `pwd`.
+Further, although the deleted files and directories might be in the Recycle bin which can be recovered, we should not rely on this. Also the "Undo" command in VSCode does not always work to revert a delete command.
+Therefore, always check your current directory.
 
 
 
@@ -187,7 +172,7 @@ Therefore, always check your current directory using the command `pwd`.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- `git init` initializes a repository.
+- `Initialize Repository` sets up a new repository.
 - Git stores all of its repository data in the `.git` directory.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
