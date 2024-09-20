@@ -71,33 +71,24 @@ we will lose the project's history.
 
 Next, we will change the default branch to be called `main`.
 This might be the default branch depending on your settings and version
-of git.
+of git. 
 See the [setup episode](02-setup.md#default-git-branch-naming) for more information on this change.
 
-```bash
-$ git checkout -b main
-```
+To see branch name, ensure that `Source Control Repositories` is selected. As shown below, the branch is called "project".
 
-```output
-Switched to a new branch 'main'
-```
+<img src="fig/03-d-source-control-repositories.JPG" alt="03-d-source-control-repositories" width=50%>
 
-We can now start using one of the most important git commands, which is particularly helpful to beginners. `git status` tells us the status of our project, and better, a list of changes in the project and options on what to do with those changes. We can use it as often as we want, whenever we want to understand what is going on.
+Under `Source Control Repositories`, click on the three dots of our repository `recipes`, and select `Rename Branch`:
 
-```bash
-$ git status
-```
+<img src="fig/03-d-source-control-sub-menu.JPG" alt="03-d-source-control-sub-menu" width=50%>
 
-```output
-On branch main
+<img src="fig/03-d-rename-branch.JPG" alt="03-d-rename-branch" width=50%>
 
-No commits yet
+Enter "main" and press Return to save. The branch is renamed to `main`:
 
-nothing to commit (create/copy files and use "git add" to track)
-```
+<img src="fig/03-d-main.JPG" alt="03-d-main" width=50%>
 
-If you are using a different version of `git`, the exact
-wording of the output might be slightly different.
+We can now start using one of the most important git commands, which is particularly helpful to beginners. In the screenshot above, in the `Source Control` window, is a blue button. It will show a different command depending on the status of our repository. Under this button we will find what changes have been made in the repository and the status of this change. The information here is updated as we make changes to our repository. We will see more examples of this later. For now, remember that this `Source Control` window tells us the status of our project, and better, a list of changes in the project and options on what to do with those changes. We can refer to it as often as we want, whenever we want to understand what is going on.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
