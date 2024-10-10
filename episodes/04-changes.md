@@ -20,15 +20,74 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+# Create text file
 First let's make sure we're still in the right directory.
 You should be in the `recipes` directory.
 
-```bash
-$ cd ~/Desktop/recipes
-```
+<img src="fig/04-a1-repo.JPG" alt="04-a1-repo" width=50%>
 
 Let's create a file called `guacamole.md` that contains the basic structure to
-have a recipe.
+have a recipe. 
+
+<hr >
+
+**Option 1 Windows Explorer**. You can do this in Windows explorer, menu `New` and then `New Text Document`:
+
+<img src="fig/04-a2-new-file.JPG" alt="04-a2-new-file" width=50%>
+
+Alternatively, context menu is available by right-clicking in the explorer for the pop-up menu and choose `New Text Document`:
+
+<img src="fig/04-a3-new-file.JPG" alt="04-a3-new-file" width=50%>
+
+Name the text document `guacamole.md`. Check that the file extension is `md`.
+
+<hr >
+
+**Option 2 Visual Studio Code File menu** VS Code also has file management options. First, ensure that you are in Explorer view. If not, please click top menu `View` and then `Explorer`:
+
+<img src="fig/04-a4-explorer-menu.JPG" alt="04-a4-explorer-menu" width=50%>
+
+Then, click top menu `File` followed by `New File`, and you are asked for the file name:
+
+<img src="fig/04-a5-new-file.JPG" alt="04-a5-new-file" width=50%>
+
+Name the text document `guacamole.md` - check that the file extension is `md` - and press return.
+
+<hr >
+
+**Option 3 VS Code Explorer New File** Another option to create files is to use the new file icon in Exlorer:
+
+<img src="fig/04-a7-new-file.JPG" alt=" 04-a7-new-file" width=50%>
+
+
+<hr >
+
+The new file is listed in the Primary Side Bar (left). Whether you created the file in VS Code or Windows Explorer, you can use either to edit the file. VS Code has the new file opened for editing when it is created. File edited in VS Code and be further edited in a Windows text editor, and vice versa.
+
+**Text editor in MS WIndows.**
+If you prefer to edit the file in Windows Explorer, you will use your text editor of choice. Please ensure the editor saves in text format only: Windows `Notepad` is a good choice, but not `Write`. Other options include `Notepad++` and `Sublime Text`. To check an editor works as required, save the file, then open it in VS Code.
+
+VS Code keeps track of changes in your repository. Here, the new file has a "U" on its right: both in the Primary Side Bar, and in the file tab. "U" indicates that this file is untracked. We want to have version control to track this file, we will do that later.
+
+<img src="fig/04-a6-file-untracked.JPG" alt="04-a6-file-untracked" width=50%>
+
+# Edit text file
+For now we want to add contents to the file. Please add the following to the file, and ensure that they occupy the top three lines of the document. (As above, you can use VS Code, or a Windows text editor to do this.)
+
+```
+# Guacamole
+## Ingredients
+## Instructions
+```
+
+Save the document: in VS Code, click `File`, `Save`, or Control-S.
+
+With the file opened in VS Code, take note of the file tab: when a file has changes that have not been saved, the right side icon is a dark circle. When the file is saved, the icon becomes an X. Whether a dark circle or an X, click on it closes that window, and you are asked if you want to save it if it has changes.
+
+<hr >
+<hr >
+<hr >
+
 We'll use `nano` to edit the file;
 you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create.html#which-editor) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
