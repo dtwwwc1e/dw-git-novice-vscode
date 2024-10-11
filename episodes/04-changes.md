@@ -67,7 +67,8 @@ The new file is listed in the Primary Side Bar (left). Whether you created the f
 **Text editor in MS WIndows.**
 If you prefer to edit the file in Windows Explorer, you will use your text editor of choice. Please ensure the editor saves in text format only: Windows `Notepad` is a good choice, but not `Write`. Other options include `Notepad++` and `Sublime Text`. To check an editor works as required, save the file, then open it in VS Code.
 
-VS Code keeps track of changes in your repository. Here, the new file has a "U" on its right: both in the Primary Side Bar, and in the file tab. "U" indicates that this file is untracked. We want to have version control to track this file, we will do that later.
+VS Code keeps track of changes in your repository, it tells us that it's noticed the new file.  
+Here, the new file has a "U" on its right: both in the Primary Side Bar, and in the file tab. "U" indicates that VS Code is not keeping track of this file. We want to have VS Code to track this file for changes: we will do that later.
 
 <img src="fig/04-a7-new-file-created.JPG" alt="04-a7-new-file-created" width=50%>
 
@@ -88,85 +89,44 @@ The file status is also shown in the Primary Side Bar, when hovering over it, or
 <img src="fig/04-b2-git-status.JPG" alt="04-b1-git-status" width=40%>&nbsp;&nbsp;&nbsp;
 <img src="fig/04-b3-git-status.JPG" alt="04-b1-git-status" width=40%>
 
+We will now save the file (menu `File` - `Save`). The file tab indicator changes from the dark circle to `X`.
 
+# Creating first version of the file
+To manage file versions, we switch over to source control view. As a reminder, here is how to go to  source control view:
 
-<hr >
-<hr >
-<hr >
+If VS Code top menu is visible, use `View` and `Source Control`. If the top menu is not available (because VS Code window is narrow), the menu is available from the menu shortcut on the left.
+<img src="fig/04-c2-source-control-menu.JPG" alt="04-c2-source-control-menu" width=50%><p>&nbsp;</p>
+<img src="fig/04-c3-source-control-menu.JPG" alt="04-c3-source-control-menu" width=50%>
 
-Let's first verify that the file was properly created by running the list command (`ls`):
+For clarity, please display all available source control functions from the Source COntrol sub-menu:
+<img src="fig/04-c4-source-control-sub-menu.JPG" alt="04-c4-source-control-sub-menu" width=50%>
 
-```bash
-$ ls
-```
+The source control view should look similar to this:
+<img src="fig/04-c1-source-control-view.JPG" alt="04-c1-source-control-view" width=50%>
 
-```output
-guacamole.md
-```
+In the above source control view, VS Code tells us that it's noticed one new file indicated with `1` and the `U`. Further, it tells us this is in repository branch "main".
 
-`guacamole.md` contains a single line, which we can see by running:
+We can tell Git to track this file by clicking the '**&#043;**' icon, for **staging** the file. Note that in this case we have only one file to track, we can either click the '**&#043;**' of the file, or the '**&#043;**' (second screenshot) which is for the whole set of file (where only file is available and to add to tracking). This process is called "staging" because it is the holding area before fully commiting this version.
 
-```bash
-$ cat guacamole.md
-```
+<img src="fig/04-e1-staging-file.JPG" alt="04-e1-staging-file" width=50%>
+<img src="fig/04-e2-staging-all.JPG" alt="04-e2-staging-all" width=50%>
 
-```output
-# Guacamole
-## Ingredients
-## Instructions
-```
+VS Code will carry out some steps to add the file. After a few seconds, it will show completion of the "staging" stage:
 
-If we check the status of our project again,
-Git tells us that it's noticed the new file:
+<img src="fig/04-f1-staging-done.JPG" alt="04-f1-staging-done" width=50%>
 
-```bash
-$ git status
-```
-
-```output
-On branch main
-
-No commits yet
-
-Untracked files:
-   (use "git add <file>..." to include in what will be committed)
-
-	guacamole.md
-
-nothing added to commit but untracked files present (use "git add" to track)
-```
-
-The "untracked files" message means that there's a file in the directory
-that Git isn't keeping track of.
-We can tell Git to track a file using `git add`:
-
-```bash
-$ git add guacamole.md
-```
-
-and then check that the right thing happened:
-
-```bash
-$ git status
-```
-
-```output
-On branch main
-
-No commits yet
-
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-
-	new file:   guacamole.md
-
-```
+Here, take note that there are '0' changes between the staging area and the working directory. Secondly, the file is added ('A') to staging. Staged Changes shows '1' to tell us that VS Code know there is one file being different between content of Staging and commit history.
 
 Git now knows that it's supposed to keep track of `guacamole.md`,
 but it hasn't recorded these changes as a commit yet.
 To get it to do that,
 we need to run one more command:
 
+
+
+<hr >
+<hr >
+<hr >
 ```bash
 $ git commit -m "Create a template for recipe"
 ```
