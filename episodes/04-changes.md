@@ -57,7 +57,7 @@ Name the text document `guacamole.md` - check that the file extension is `md` - 
 
 **Option 3 VS Code Explorer New File** Another option to create files is to use the new file icon in Exlorer:
 
-<img src="fig/04-a7-new-file.JPG" alt=" 04-a7-new-file" width=50%>
+<img src="fig/04-a6-new-file.JPG" alt=" 04-a6-new-file" width=50%>
 
 
 <hr >
@@ -69,10 +69,10 @@ If you prefer to edit the file in Windows Explorer, you will use your text edito
 
 VS Code keeps track of changes in your repository. Here, the new file has a "U" on its right: both in the Primary Side Bar, and in the file tab. "U" indicates that this file is untracked. We want to have version control to track this file, we will do that later.
 
-<img src="fig/04-a6-file-untracked.JPG" alt="04-a6-file-untracked" width=50%>
+<img src="fig/04-a7-new-file-created.JPG" alt="04-a7-new-file-created" width=50%>
 
 # Edit text file
-For now we want to add contents to the file. Please add the following to the file, and ensure that they occupy the top three lines of the document. (As above, you can use VS Code, or a Windows text editor to do this.)
+Type the text below into the `guacamole.md` file. Please take note that the text begins on the first line, with no space on the left, and each line begins with one or two '#' exactly as shown:
 
 ```
 # Guacamole
@@ -80,29 +80,19 @@ For now we want to add contents to the file. Please add the following to the fil
 ## Instructions
 ```
 
-Save the document: in VS Code, click `File`, `Save`, or Control-S.
+<img src="fig/04-b1-git-status.JPG" alt="04-b1-git-status" width=50%>
 
-With the file opened in VS Code, take note of the file tab: when a file has changes that have not been saved, the right side icon is a dark circle. When the file is saved, the icon becomes an X. Whether a dark circle or an X, click on it closes that window, and you are asked if you want to save it if it has changes.
+With the file opened in VS Code, take note of the file tab: when a file has changes that have not been saved, the right side icon is a dark circle (&#x25CF;). When the file is saved, the icon becomes an `X` (**&#10005;**). Whether a dark circle or an `X`, clicking on it closes that window, and you are asked if you want to save it if it has changes.
+
+The file status is also shown in the Primary Side Bar, when hovering over it, or having it selected:
+<img src="fig/04-b2-git-status.JPG" alt="04-b1-git-status" width=40%>&nbsp;&nbsp;&nbsp;
+<img src="fig/04-b3-git-status.JPG" alt="04-b1-git-status" width=40%>
+
+
 
 <hr >
 <hr >
 <hr >
-
-We'll use `nano` to edit the file;
-you can use whatever editor you like.
-In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create.html#which-editor) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
-
-```bash
-$ nano guacamole.md
-```
-
-Type the text below into the `guacamole.md` file:
-
-```output
-# Guacamole
-## Ingredients
-## Instructions
-```
 
 Let's first verify that the file was properly created by running the list command (`ls`):
 
