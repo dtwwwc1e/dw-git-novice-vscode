@@ -21,103 +21,60 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-As we saw in the previous episode, we can refer to commits by their
-identifiers.  You can refer to the *most recent commit* of the working
-directory by using the identifier `HEAD`.
+As we saw in the previous episode, we can refer to commits using Git Graph.  By default, Git Graph refers to the *most recent commit* of the working directory.
 
 We've been adding small changes at a time to `guacamole.md`, so it's easy to track our
-progress by looking, so let's do that using our `HEAD`s.  Before we start,
-let's make a change to `guacamole.md`, adding yet another line.
+progress by looking, so let's do that using Git Graph.  Before we start,
+let's make a change to `guacamole.md`, adding yet another line. Remember to **save** the file.
 
-```bash
-$ nano guacamole.md
-$ cat guacamole.md
-```
+<img src="fig/05-a1-file-changed1.JPG" alt="05-a1-file-changed1" width=50%>
 
-```output
-# Guacamole
-## Ingredients
-* avocado
-* lime
-* salt
-## Instructions
-An ill-considered change
-```
+Now, let's see what we get using `View Changes` icon <img src="fig/View-changes-icon.jpg" alt="View-changes-icon" width=20px>.
 
-Now, let's see what we get.
+<img src="fig/05-a2-file-changed2.JPG" alt="05-a2-file-changed2" width=50%>
 
-```bash
-$ git diff HEAD guacamole.md
-```
+VS Code might show only the important lines with changes: see the line below the file name: "3 hidden lines", followed by headers that are hidden (`# Guacamole`, `## Ingredients`)
 
-```output
-diff --git a/guacamole.md b/guacamole.md
-index b36abfd..0848c8d 100644
---- a/guacamole.md
-+++ b/guacamole.md
-@@ -4,3 +4,4 @@
- * lime
- * salt
- ## Instructions
-+An ill-considered change
-```
+Click over the "3 hidden lines" (obviously, this will say a different number of hidden lines in other occasions) and the file is opened in full, clicking the two inverted arrows in line 1 will take you back to the previous format with the hidden lines:
 
-which is the same as what you would get if you leave out `HEAD` (try it).  The
-real goodness in all this is when you can refer to previous commits.  We do
-that by adding `~1`
-(where "~" is "tilde", pronounced [**til**\-d*uh*])
-to refer to the commit one before `HEAD`.
+<img src="fig/05-a3-file-changed3.JPG" alt="05-a3-file-changed2" width=30%> &nbsp;&nbsp;&nbsp; <img src="fig/05-a4-file-changed4.JPG" alt="05-a4-file-changed2" width=30%>
 
-```bash
-$ git diff HEAD~1 guacamole.md
-```
+The changes shown is the same as what you would get if you use Git Graph. 
 
-If we want to see the differences between older commits we can use `git diff`
-again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
+<img src="fig/05-a5-Git-Graph1.JPG" alt="05-a5-Git-Graph1" width=50%>
 
-```bash
-$ git diff HEAD~2 guacamole.md
-```
+The top (most recent) entry has a description "Uncommitted Changes (1)" where the `1` indicates how many lines changed compared to the most recent commit. Click on the description "Uncommitted Changes (1)", then click on the file to view content difference between the "uncommitted changes (1)" version and the most recent commit.
 
-```output
-diff --git a/guacamole.md b/guacamole.md
-index df0654a..b36abfd 100644
---- a/guacamole.md
-+++ b/guacamole.md
-@@ -1,3 +1,6 @@
- # Guacamole
- ## Ingredients
-+* avocado
-+* lime
-+* salt
- ## Instructions
-```
+<img src="fig/05-a6-Git-Graph2.JPG" alt="05-a6-Git-Graph2" width=50%>
+<img src="fig/05-a7-open-file.JPG" alt="05-a7-open-file" width=30%>
 
-We could also use `git show` which shows us what changes we made at an older commit as
+VS Code shows the difference, which is the same as the `View Changes` above.
+
+<img src="fig/05-a8-git-diff.JPG" alt="05-a8-git-diff" width=50%>
+
+The real goodness in all this is when you can refer to previous commits. If we want to see the differences between older commits we can select do so in Git Graph. In the screenshot below, the first two entries are selected. To do multiple select, on Windows, hold down the CTRL (control) key and click the two entries; on the Mac, use the Option key.
+
+<img src="fig/05-a8-git-diff.JPG" alt="05-a8-git-diff" width=50%>
+
+Click on the file name `guacamole.md` and VS Code shows you the file difference between the two versions, "Uncommitted changes (1)" and the most recent change (also called the "HEAD").
+
+<img src="fig/05-a10-git-graph-head.JPG" alt="05-a10-git-graph-head" width=40%> &nbsp; <img src="fig/05-a11-git-diff-head.JPG" alt="05-a11-git-diff-head" width=40%>
+
+The screenshots below show comparing the "Uncommitted changes (1)" version with the one two versions back, also referred to "HEAD~1" (where "~" is "tilde", pronounced [til-duh]).
+
+<img src="fig/05-a12-git-graph-head~1.JPG" alt="05-a12-git-graph-head~1" width=40%> &nbsp; <img src="fig/05-a13-git-diff-head~1.JPG" alt="05-a14-git-diff-head~1" width=40%>
+
+These show comparing "Uncommitted changes (1)" with "HEAD~2". Of interest here is that the list of files have changed, not the content of `guacamole.md`.
+
+<img src="fig/05-a14-git-graph-head~2.JPG" alt="05-a14-git-graph-head~12" width=40%> &nbsp; <img src="fig/05-a15-git-diff-head~2.JPG" alt="05-a15-git-diff-head~2" width=40%>
+
+We can also use Git Graph to show us what changes we made at an older commit as
 well as the commit message, rather than the *differences* between a commit and our
-working directory that we see by using `git diff`.
+working directory. To do this, click on an older commit, as shown in the following screenshot which is the changes 3 versions back (or "HEAD~3")
 
-```bash
-$ git show HEAD~2 guacamole.md
-```
+<img src="fig/05-a16-git-show.JPG" alt="05-a16-git-show" width=40%> 
 
-```output
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Alfredo Linguini <a.linguini@ratatouille.fr>
-Date:   Thu Aug 22 10:07:21 2013 -0400
 
-    Create a template for recipe
-
-diff --git a/guacamole.md b/guacamole.md
-new file mode 100644
-index 0000000..df0654a
---- /dev/null
-+++ b/guacamole.md
-@@ -0,0 +1,3 @@
-+# Guacamole
-+## Ingredients
-+## Instructions
-```
 
 In this way,
 we can build up a chain of commits.
@@ -128,57 +85,15 @@ means "the previous commit",
 while `HEAD~123` goes back 123 commits from where we are now.
 
 We can also refer to commits using
-those long strings of digits and letters
-that `git log` displays.
-These are unique IDs for the changes,
-and "unique" really does mean unique:
-every change to any set of files on any computer
-has a unique 40-character identifier.
-Our first commit was given the ID
-`f22b25e3233b4645dabd0d81e651fe074bd8e73b`,
-so let's try this:
+those long strings of digits and letters as shown in Git Graph: in the above screenshot, HEAD~3's full commit ID is the one beginning 64b7020ec3257f6183eb...
 
-```bash
-$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b guacamole.md
-```
+We don't specify Commit ID directly, which means it is very important to use good commit messages for easy identification. However, commit IDs can be used for easy reference when working in a team: in that case the short version will do.
 
-```output
-diff --git a/guacamole.md b/guacamole.md
-index df0654a..93a3e13 100644
---- a/guacamole.md
-+++ b/guacamole.md
-@@ -1,3 +1,7 @@
- # Guacamole
- ## Ingredients
-+* avocado
-+* lime
-+* salt
- ## Instructions
-+An ill-considered change
-```
+<hr />
+<hr />
+<hr />
 
-That's the right answer,
-but typing out random 40-character strings is annoying,
-so Git lets us use just the first few characters (typically seven for normal size projects):
 
-```bash
-$ git diff f22b25e guacamole.md
-```
-
-```output
-diff --git a/guacamole.md b/guacamole.md
-index df0654a..93a3e13 100644
---- a/guacamole.md
-+++ b/guacamole.md
-@@ -1,3 +1,7 @@
- # Gucamole
- ## Ingredients
-+* avocado
-+* lime
-+* salt
- ## Instructions
-+An ill-considered change
-```
 
 All right! So
 we can save changes to files and see what we've changed. Now, how
