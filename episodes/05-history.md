@@ -89,133 +89,33 @@ those long strings of digits and letters as shown in Git Graph: in the above scr
 
 We don't specify Commit ID directly, which means it is very important to use good commit messages for easy identification. However, commit IDs can be used for easy reference when working in a team: in that case the short version will do.
 
-<hr />
-<hr />
-<hr />
-
-
 
 All right! So
 we can save changes to files and see what we've changed. Now, how
 can we restore older versions of things?
 Let's suppose we change our mind about the last update to
-`guacamole.md` (the "ill-considered change").
+`guacamole.md` (the "ill-considered change"). We can use `checkout` to revert to the most recent commit. In Git Graph, right-click on the most recent commit entry, and choose `Checkout...` from the drop-down menu. In the pop-up message, it warns that this "will result in a 'detached HEAD' state". This is explained [later](#don't-lose-your-head).
 
-`git status` now tells us that the file has been changed,
-but those changes haven't been staged:
+To maintain "HEAD" for the checkout, we can use `stash` to save the current changes for later use, and we will be returned to the last commit version of the working directory. To do this, right click on the "Uncommitted changes (1)" item and choose "Stash uncommitted changes". The stashed version is shown in Git Graph. The following screenshots show the stash entry, but HEAD is at the most recent commit, and there are no changes in the working directory.
 
-```bash
-$ git status
-```
+<img src="fig/05-b1-stash.JPG" alt="05-b1-stash" width=50%>
+<img src="fig/05-b2-HEAD.JPG" alt="05-b2-HEAD" width=50%> 
 
-```output
-On branch main
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+Note that the `checkout` operates on a commit entry, not individual file from that commit. 
 
-    modified:   guacamole.md
-
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-
-We can put things back the way they were
-by using `git checkout`:
-
-```bash
-$ git checkout HEAD guacamole.md
-$ cat guacamole.md
-```
-
-```output
-# Guacamole
-## Ingredients
-* avocado
-* lime
-* salt
-## Instructions
-```
-
-As you might guess from its name,
-`git checkout` checks out (i.e., restores) an old version of a file.
-In this case,
-we're telling Git that we want to recover the version of the file recorded in `HEAD`,
-which is the last saved commit.
-If we want to go back even further,
-we can use a commit identifier instead:
-
-```bash
-$ git checkout f22b25e guacamole.md
-```
-
-```bash
-$ cat guacamole.md
-```
-
-```output
-# Guacamole
-## Ingredients
-## Instructions
-```
-
-```bash
-$ git status
-```
-
-```output
-On branch main
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-    modified:   guacamole.md
-
-```
-
-Notice that the changes are currently in the staging area.
-Again, we can put things back the way they were
-by using `git checkout`:
-
-```bash
-$ git checkout HEAD guacamole.md
-```
+We can use `checkout` to retrieve content from any other commit. However, note that the whole working directory will be changed to the version from the commit entry.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Don't Lose Your HEAD
 
-Above we used
-
-```bash
-$ git checkout f22b25e guacamole.md
-```
-
-to revert `guacamole.md` to its state after the commit `f22b25e`. But be careful!
-The command `checkout` has other important functionalities and Git will misunderstand
-your intentions if you are not accurate with the typing. For example,
-if you forget `guacamole.md` in the previous command.
-
-```bash
-$ git checkout f22b25e
-```
-
-```error
-Note: checking out 'f22b25e'.
-
-You are in 'detached HEAD' state. You can look around, make experimental
+Above we used `checkout` to revert `guacamole.md` to its state after the commit `22266117`. But be careful because this leads to a "detached HEAD" state. Git's manual says that while in this state, you can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
 state without impacting any branches by performing another checkout.
 
-If you want to create a new branch to retain commits you create, you may
-do so (now or later) by using -b with the checkout command again. Example:
-
- git checkout -b <new-branch-name>
-
-HEAD is now at f22b25e Create a template for recipe
-```
-
 The "detached HEAD" is like "look, but don't touch" here,
 so you shouldn't make any changes in this state.
-After investigating your repo's past state, reattach your `HEAD` with `git checkout main`.
+After investigating your repo's past state, reattach your `HEAD` on the most recent entry: right-click on it and choose checkout.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -226,48 +126,23 @@ we must use the commit number that identifies the state of the repository
 A common mistake is to use the number of
 the commit in which we made the change we're trying to discard.
 In the example below, we want to retrieve the state from before the most
-recent commit (`HEAD~1`), which is commit `f22b25e`:
+recent commit (`HEAD~1`), (`f22b25e` in this example):
 
-![](fig/git-checkout.svg){alt='A diagram showing how git checkout HEAD~1 can be used to restore the previous version of two files'}
+![A diagram showing how git checkout HEAD~1 can be used to restore the previous version of two files](fig/git-checkout.svg)
 
 So, to put it all together,
 here's how Git works in cartoon form:
 
-![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](fig/git_staging.svg){alt='A diagram showing the entire git workflow: local changes are staged using git add, applied to the local repository using git commit, and can be restored from the repository using git checkout'}
+![A diagram showing the entire git workflow: local changes are staged using git add, applied to the local repository using git commit, and can be restored from the repository using git checkout](fig/git_staging.svg)
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Simplifying the Common Case
 
-If you read the output of `git status` carefully,
-you'll see that it includes this hint:
+<hr />
+<hr />
+<hr />
 
-```bash
-(use "git checkout -- <file>..." to discard changes in working directory)
-```
-
-As it says,
-`git checkout` without a version identifier restores files to the state saved in `HEAD`.
-The double dash `--` is needed to separate the names of the files being recovered
-from the command itself:
-without it,
-Git would try to use the name of the file as the commit identifier.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-The fact that files can be reverted one by one
-tends to change the way people organize their work.
-If everything is in one large document,
-it's hard (but not impossible) to undo changes to the introduction
-without also undoing changes made later to the conclusion.
-If the introduction and conclusion are stored in separate files,
-on the other hand,
-moving backward and forward in time becomes much easier.
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Recovering Older Versions of a File
+## Recovering Older Versions of a File --- we need a revised exercise
 
 Jennifer has made changes to the Python script that she has been working on for weeks, and the
 modifications she made this morning "broke" the script and it no longer runs. She has spent
