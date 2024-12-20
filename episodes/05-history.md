@@ -237,31 +237,32 @@ else has committed changes to the repository.
 
 ## Understanding Workflow and History
 
-What is the output of the last command in
+What is the content of the file after this series of action:
 
-```bash
-$ cd recipes
-$ echo "I like tomatos, therefore I like ketchup" > ketchup.md
-$ git add ketchup.md
-$ echo "ketchup enchances pasta dishes" > ketchup.md
-$ git commit -m "my opinions about the red sauce"
-$ git checkout HEAD ketchup.md
-$ cat ketchup.md # this will print the content of ketchup.md on screen
-```
+<ol>
+  <li>Go to folder `recipes`</li>
+  <li>Create new file `ketchup.md`</li>
+  <li>Put the this line at the top of the file "I like tomatos, therefore I like ketchup"</li>
+  <li>Save the file</li>
+  <li>Stage changes this file</li>
+  <li>Open the same file (`ketchup.md`) and replace the first line with "ketchup enhances pasta dishes"</li>
+  <li>Save the file</li>
+  <li>Run commit and provide message "my opinions about the red sauce"</li>
+  <li>Use Git Graph to checkout the most recent commit</li>
+  <li>Open the file `ketchup.md`</li>
+</ol>
 
-1. ```output
-  ketchup enchances pasta dishes
-  ```
-2. ```output
-  I like tomatos, therefore I like ketchup
-  ```
-3. ```output
-  I like tomatos, therefore I like ketchup
-  ketchup enchances pasta dishes
-  ```
-4. ```output
-  Error because you have changed ketchup.md without committing the changes
-  ```
+Is it:
+
+**A**. ketchup enchances pasta dishes
+
+**B**. I like tomatos, therefore I like ketchup
+
+**C**. I like tomatos, therefore I like ketchup
+   ketchup enchances pasta dishes
+
+**D**. Error because you have changed ketchup.md without committing the changes
+
 
 :::::::::::::::  solution
 
