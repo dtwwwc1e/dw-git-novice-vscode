@@ -2,10 +2,11 @@
 
 > [!IMPORTANT]
 > This is a [fork](https://docs.github.com/en/pull-requests/how-tos/work-with-forks) of the official Software Carpentry lesson: [Version control with Git](https://github.com/swcarpentry/git-novice/).
-> At UCL, we sometimes prefer to use Microsoft Visual Studio Code to teach Git, rather than the command-line interface, so this is our flavour of the Git lesson.
-> This repository is currently under development.
->
-> This fork is developed and maintained by the [UCL Centre for Advanced Research Computing's Education team](https://github.com/UCL-ARC/Education).
+> 
+> At UCL, we sometimes prefer to use [Microsoft Visual Studio Code](https://code.visualstudio.com/) to teach Git, rather than the command-line interface, so this is our flavour of the Git lesson.
+> This fork is developed and maintained by the UCL [Centre for Advanced Research Computing](https://www.ucl.ac.uk/research-innovation/advanced-research-computing/)'s [Education team](https://www.ucl.ac.uk/research-innovation/advanced-research-computing/education).
+
+**This repository is currently under development.**
 
 ----
 
