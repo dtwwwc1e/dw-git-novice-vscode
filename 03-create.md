@@ -74,7 +74,7 @@ This might be the default branch depending on your settings and version
 of git.
 See the [setup episode](02-setup.md#default-git-branch-naming) for more information on this change.
 
-To see branch name, ensure that `Source Control Repositories` is selected. As shown below, the branch is called "project".
+To see the current branch name, ensure that `Source Control Repositories` is selected. As shown below, the branch name is shown next to the repository.
 
 <img src="fig/03-d-source-control-repositories.JPG" alt="03-d-source-control-repositories" width=50%>
 
