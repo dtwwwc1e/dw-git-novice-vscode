@@ -35,7 +35,7 @@ and then selecting the `recipes` folder:
 <img src="fig/03-a-select-directory.JPG" alt="03-a-select-directory" width=50%>
 
 Then we tell Git to make `recipes` a [repository](../learners/reference.md#repository)
-\-- a place where Git can store versions of our files. Click menu `View` and then `Source Control`:
+\-- a place where Git can store versions of our files. Click the `Source Control` button <img src="https://www.svgrepo.com/show/361322/source-control.svg" atl="Source Control Button" width="30px"> on the left bar (third from the top, or through the `View` menu if the bar is hidden):
 
 <img src="fig/03-b-source-control-menu.JPG" alt="03-b-source-control-menu" width=50%>
 
@@ -71,24 +71,34 @@ we will lose the project's history.
 
 Next, we will change the default branch to be called `main`.
 This might be the default branch depending on your settings and version
-of git. 
+of git.
 See the [setup episode](02-setup.md#default-git-branch-naming) for more information on this change.
 
 To see branch name, ensure that `Source Control Repositories` is selected. As shown below, the branch is called "project".
 
 <img src="fig/03-d-source-control-repositories.JPG" alt="03-d-source-control-repositories" width=50%>
 
-Under `Source Control Repositories`, click on the three dots of our repository `recipes`, and select `Rename Branch`:
+Under `Source Control` the three dots menu, navigate through `Branch` and select `Rename Branch`:
 
 <img src="fig/03-d-source-control-sub-menu.JPG" alt="03-d-source-control-sub-menu" width=50%>
 
 <img src="fig/03-d-rename-branch.JPG" alt="03-d-rename-branch" width=50%>
 
-Enter "main" and press Return to save. The branch is renamed to `main`:
+Enter "main" and press <kbd>Return</kbd> to save. The branch is renamed to `main`:
 
 <img src="fig/03-d-main.JPG" alt="03-d-main" width=50%>
 
-We can now start using one of the most important git commands, which is particularly helpful to beginners. In the screenshot above, in the `Source Control` window, is a blue button. It will show a different command depending on the status of our repository. Under this button we will find what changes have been made in the repository and the status of this change. The information here is updated as we make changes to our repository. We will see more examples of this later. For now, remember that this `Source Control` window tells us the status of our project, and better, a list of changes in the project and options on what to do with those changes. We can refer to it as often as we want, whenever we want to understand what is going on.
+We can now start using one of the most important git commands, 
+which is particularly helpful to beginners. 
+In the screenshot below, in the `Source Control` window, is a blue button. 
+It will show a different command depending on the status of our repository.
+Under this button we will find what changes have been made in the repository
+and the status of this change. 
+The information here is updated as we make changes to our repository. 
+We will see more examples of this later. 
+For now, remember that this `Source Control` window tells us the status of our project, 
+and better, a list of changes in the project and options on what to do with those changes. 
+We can refer to it as often as we want, whenever we want to understand what is going on.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -135,7 +145,8 @@ repository in the directory, check the output of `git status`.
 
 ## Correcting Initialize Repository Mistakes
 
-Alfredo has managed to create the `dessert` repository inside `recipes`. Jimmy explains to Alfredo how such a nested repository is redundant and may cause confusion
+Alfredo has managed to create the `dessert` repository inside `recipes`. 
+Jimmy explains to Alfredo how such a nested repository is redundant and may cause confusion
 down the road. Alfredo would like to go back to a single git repository. How can Alfredo undo
 his last Initialize Repository in the `desserts` subdirectory?
 
@@ -147,9 +158,9 @@ his last Initialize Repository in the `desserts` subdirectory?
 
 Removing files from a Git repository needs to be done with caution. But we have not learned
 yet how to tell Git to track a particular file; we will learn this in the next episode. Files
-that are not tracked by Git can easily be removed like any other "ordinary" files by deleting them in VSCode Explorer.
+that are not tracked by Git can easily be removed like any other "ordinary" files by deleting them in the system file browser.
 
-Similarly a directory can be removed in the same way in Explorer.
+Similarly a directory can be removed in the same way in VSCode `Explorer` panel.
 If the files or folder being removed in this fashion are tracked by Git, then their removal
 becomes another change that we will need to track, as we will see in the next episode.
 
@@ -161,7 +172,9 @@ folder in the desserts subdirectory by deleting the `.git` directory.
 
 But be careful! Running this command in the wrong directory will remove
 the entire Git history of a project you might want to keep.
-Further, although the deleted files and directories might be in the Recycle bin which can be recovered, we should not rely on this. Also the "Undo" command in VSCode does not always work to revert a delete command.
+Further, although the deleted files and directories might be in the Recycle bin which can be recovered, 
+we should not rely on this. 
+Also the "Undo" command in VSCode does not always work to revert a deleted file or directory.
 Therefore, always check your current directory.
 
 
