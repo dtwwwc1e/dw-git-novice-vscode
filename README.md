@@ -1,7 +1,19 @@
+# git-novice-vscode
+
+> [!IMPORTANT]
+> This is a [fork](https://docs.github.com/en/pull-requests/how-tos/work-with-forks) of the official Software Carpentry lesson: [Version control with Git](https://github.com/swcarpentry/git-novice/).
+> 
+> At UCL, we sometimes prefer to use [Microsoft Visual Studio Code](https://code.visualstudio.com/) to teach Git, rather than the command-line interface, so this is our flavour of the Git lesson.
+> This fork is developed and maintained by the UCL [Centre for Advanced Research Computing](https://www.ucl.ac.uk/research-innovation/advanced-research-computing/)'s [Education team](https://www.ucl.ac.uk/research-innovation/advanced-research-computing/education).
+
+**This repository is currently under development.**
+
+----
+
+Here is the rest of the original README:
+
 [![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://slack-invite.carpentries.org/)
 [![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--git-E01563.svg)](https://carpentries.slack.com/messages/C91JS49HD)
-
-# git-novice
 
 An introduction to version control for novices using Git.
 Please see [https://swcarpentry.github.io/git-novice/](https://swcarpentry.github.io/git-novice/) for a rendered version of this material,
@@ -11,6 +23,7 @@ Maintainers:
 
 - [Kat Koziar][koziar_kat]: [@kekoziar](https://github.com/kekoziar)
 - [Martino Sorbaro][sorbaro_mart]: [@martinosorb](https://github.com/martinosorb)
+- Erin Graham: [@erinmgraham](https://github.com/erinmgraham)
 
 Alumni maintainers:
 

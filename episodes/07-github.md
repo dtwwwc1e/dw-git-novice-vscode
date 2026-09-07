@@ -80,7 +80,7 @@ GitHub repository a [remote](../learners/reference.md#remote) for the local repo
 The home page of the repository on GitHub includes the URL string we need to
 identify it:
 
-![](fig/github-find-repo-string.png){alt='Clicking the "Copy to Clipboard" button on GitHub to obtain the repository\'s URL'}
+![](fig/github-change-repo-string.png){alt='A screenshot showing that clicking on "SSH" will make GitHub provide the SSH URL for a repository instead of the HTTPS URL'}
 
 Click on the 'SSH' link to change the [protocol](../learners/reference.md#protocol) from HTTPS to SSH.
 
@@ -90,13 +90,12 @@ Click on the 'SSH' link to change the [protocol](../learners/reference.md#protoc
 
 We use SSH here because, while it requires some additional configuration, it is a
 security protocol widely used by many applications.  The steps below describe SSH at a
-minimum level for GitHub. A supplemental episode to this lesson discusses advanced setup
-and concepts of SSH and key pairs, and other material supplemental to git related SSH.
+minimum level for GitHub.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-![](fig/github-change-repo-string.png){alt='A screenshot showing that clicking on "SSH" will make GitHub provide the SSH URL for a repository instead of the HTTPS URL'}
+![](fig/github-find-repo-string.png){alt='Clicking the "Copy to Clipboard" button on GitHub to obtain the repository\'s URL'}
 
 Copy that URL from the browser, go into the local `recipes` repository, and run
 this command:
@@ -138,15 +137,6 @@ You can think of the public key as a padlock, and only you have the key (the pri
 
 What we will do now is the minimum required to set up the SSH keys and add the public key to a GitHub account.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Advanced SSH
-
-A supplemental episode in this lesson discusses SSH and key pairs in more depth and detail.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 The first thing we are going to do is check if this has already been done on the computer you're on.  Because generally speaking, this setup only needs to happen once and then you can forget about it.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -154,8 +144,9 @@ The first thing we are going to do is check if this has already been done on the
 ## Keeping your keys secure
 
 You shouldn't really forget about your SSH keys, since they keep your account secure. It's good
-practice to audit your secure shell keys every so often. Especially if you are using multiple
-computers to access your account.
+practice to check your SSH keys every so often to ensure they are still secure, up to date, 
+and that there are no unauthorized keys that could compromise your account.
+This is especially important if you are using multiple computers to access your account.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -163,7 +154,7 @@ computers to access your account.
 We will run the list command to check what key pairs already exist on your computer.
 
 ```bash
-ls -al ~/.ssh
+$ ls -al ~/.ssh
 ```
 
 Your output is going to look a little different depending on whether or not SSH has ever been set up on the computer you are using.
@@ -177,13 +168,44 @@ ls: cannot access '/c/Users/Alfredo/.ssh': No such file or directory
 If SSH has been set up on the computer you're using, the public and private key pairs will be listed. The file names are either `id_ed25519`/`id_ed25519.pub` or `id_rsa`/`id_rsa.pub` depending on how the key pairs were set up.
 Since they don't exist on Alfredo's computer, he uses this command to create them.
 
+:::::::::::::::::::::::::::::::::::::::::  spoiler
+
+## Resolving SSH Key Conflicts: Custom Names and Paths
+
+If you need to create an SSH key pair with a custom name or store it in a non-default location (e.g., because a default-named key like id_ed25519 already exists), Git may not automatically use it when pushing or pulling from GitHub.
+
+One solution is to add a GitHub entry to your SSH config.
+
+Open or create the SSH config file:
+
+```bash
+
+$ nano ~/.ssh/config
+```
+
+Add an entry for GitHub, replacing the path with your key’s actual name and location:
+
+```
+Host github.com
+	HostName github.com
+	User git
+	IdentityFile ~/<full_path_to_SSH_key_file>/<key_name>
+	IdentitiesOnly yes
+```
+
+Save and exit. Now Git will use the correct key when pushing to GitHub.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 ### 3\.1 Create an SSH key pair
 
-To create an SSH key pair Vlad uses this command, where the `-t` option specifies which type of algorithm to use and `-C` attaches a comment to the key (here, Vlad's email):
+To create an SSH key pair Alfredo uses this command, where the `-t` option specifies which type of algorithm to use and `-C` attaches a comment to the key (here, Alfredo's email):
 
 ```bash
 $ ssh-keygen -t ed25519 -C "a.linguini@ratatouille.fr"
 ```
+In the command above, the `-C- flag is used to label the SSH key with the owner's email address. It's good practice to use the same email associated to your GitHub account, but it does not have to be, and will not be used to validate the access. You can also decide not to add any label.
 
 If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
 `$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
@@ -200,7 +222,9 @@ Created directory '/c/Users/Alfredo/.ssh'.
 Enter passphrase (empty for no passphrase):
 ```
 
-Now, it is prompting Alfredo for a passphrase.  Since he is using his kitchen's laptop that other people sometimes have access to, he wants to create a passphrase.  Be sure to use something memorable or save your passphrase somewhere, as there is no "reset my password" option.
+Now, it is prompting Alfredo for a passphrase. Since he is using his kitchen's laptop that other people sometimes have access to, he wants to create a passphrase. Be sure to use something memorable or save your passphrase somewhere, as there is no "reset my password" option.
+Note that, when typing a passphrase on a terminal, there won't be any visual feedback of your typing.
+This is normal: your passphrase will be recorded even if you see nothing changing on your screen.
 
 ```output
 Enter same passphrase again:
@@ -273,8 +297,8 @@ cat ~/.ssh/id_ed25519.pub
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI a.linguini@ratatouille.fr
 ```
 
-Now, going to GitHub.com, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings," then on the
-settings page, click "SSH and GPG keys," on the left side "Account settings" menu.  Click the "New SSH key" button on the right side. Now,
+Now, going to GitHub.com, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings", then on the
+settings page, click "SSH and GPG keys", on the left side "Access" menu. Click the "New SSH key" button on the right side. Now,
 you can add the title (Alfredo uses the title "Alfredo's Kitchen Laptop" so he can remember where the original key pair
 files are located), paste your SSH key into the field, and click the "Add SSH key" to complete the setup.
 
@@ -410,15 +434,14 @@ How would you get that same information in the shell?
 
 ## Solution
 
-The left-most button (with the picture of a clipboard) copies the full identifier of the commit
-to the clipboard. In the shell, `git log` will show you the full commit identifier for each
-commit.
-
-When you click on the middle button, you'll see all of the changes that were made in that
+When you click on the left-most button, you'll see all of the changes that were made in that
 particular commit. Green shaded lines indicate additions and red ones removals. In the shell we
 can do the same thing with `git diff`. In particular, `git diff ID1..ID2` where ID1 and
 ID2 are commit identifiers (e.g. `git diff a3bf1e5..041e637`) will show the differences
 between those two commits.
+
+The middle button (with the picture of two overlapping squares or pages) copies the full identifier of the commit
+to the clipboard. In the shell, `git log` will show you the full commit identifier for each commit.
 
 The right-most button lets you view all of the files in the repository at the time of that
 commit. To do this in the shell, we'd need to checkout the repository at that particular time.
