@@ -145,7 +145,7 @@ repository in the directory, check the output of `git status`.
 
 ## Correcting Initialize Repository Mistakes
 
-Alfredo has managed to create the `dessert` repository inside `recipes`. 
+Alfredo has managed to create the `desserts` repository inside `recipes`. 
 Jimmy explains to Alfredo how such a nested repository is redundant and may cause confusion
 down the road. Alfredo would like to go back to a single git repository. How can Alfredo undo
 his last Initialize Repository in the `desserts` subdirectory?
