@@ -35,7 +35,7 @@ and then selecting the `recipes` folder:
 <img src="fig/03-a-select-directory.JPG" alt="03-a-select-directory" width=50%>
 
 Then we tell Git to make `recipes` a [repository](../learners/reference.md#repository)
-\-- a place where Git can store versions of our files. Click the `Source Control` button <img src="https://www.svgrepo.com/show/361322/source-control.svg" atl="Source Control Button" width="30px"> on the left bar (third from the top, or through the `View` menu if the bar is hidden):
+\-- a place where Git can store versions of our files. Click the `Source Control` button <img src="https://www.svgrepo.com/show/361322/source-control.svg" alt="Source Control Button" width="30px"> on the left bar (third from the top, or through the `View` menu if the bar is hidden):
 
 <img src="fig/03-b-source-control-menu.JPG" alt="03-b-source-control-menu" width=50%>
 
