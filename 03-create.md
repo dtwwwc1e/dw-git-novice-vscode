@@ -69,10 +69,8 @@ including the tracked files and sub-directories located within the project's dir
 If we ever delete the `.git` subdirectory,
 we will lose the project's history.
 
-Next, we will change the default branch to be called `main`.
-This might be the default branch depending on your settings and version
-of git.
-See the [setup episode](02-setup.md#default-git-branch-naming) for more information on this change.
+Next, check that the current branch is called `main`. If it is not, rename the current branch to `main` using the steps below.
+This changes the branch name for this repository; the [setup episode](02-setup.md#default-git-branch-naming) controls the default name for future repositories.
 
 To see the current branch name, ensure that `Source Control Repositories` is selected. As shown below, the branch name is shown next to the repository.
 
